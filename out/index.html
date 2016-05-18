@@ -9,22 +9,6 @@
 }</style><link  rel="stylesheet" href="/styles/style.css" />
 </head>
 <body>
-	<ul>
-    
-        <li class="active">
-            <a href="/index.html">
-                Javascript!
-            </a>
-        </li>
-    
-        <li class="inactive">
-            <a href="/about.html">
-                About
-            </a>
-        </li>
-    
-	</ul>
-	<img src="/images/logo.gif" />
     <h1>Javascript!</h1>
     <p>What is Javascript ? </p>
 <blockquote>
@@ -42,18 +26,15 @@ wiki : An object-oriented computer programming language commonly used to create 
 </ul>
 <p>Everything in javascript is an object. Aww!!!</p>
 <blockquote>
-<p>Act like objects.</p>
+<p>Act like objects. ( Explained in Literals section )</p>
 </blockquote>
-<p>Arrays, functions, even numbers! Because of this, you can do some really interesting things, such as modifying the prototypes of Objects, Arrays, etc.</p>
+<p><code>Arrays, functions</code>, even <code>numbers</code>! Because of this, you can do some really interesting things, such as modifying the prototypes of Objects, Arrays, etc.</p>
 <ul>
 <li>Written in <code>c++</code> ( v8 chrome <code>c++</code>, Spidermonkey firefox <code>c++</code> and Rhino <code>java</code> )</li>
-<li><p>primitive type ( <code>Boolean , Number , null , undefined and String</code> ( ex : <code>var letter = &#39;abc&#39;;</code> ) )</p>
-<blockquote>
-<p>Compared by value.</p>
-</blockquote>
-</li>
-<li><p>non-primitive ( Object, Regex and Array )</p>
-<blockquote>
+<li>primitive type ( <code>Boolean , Number , null , undefined and String</code> ( ex : <code>var letter = &#39;abc&#39;;</code> ) )</li>
+</ul>
+<ul>
+<li>non-primitive ( Object, Regex and Array )<blockquote>
 <p>Compared by unique identity.</p>
 </blockquote>
 </li>
@@ -62,11 +43,12 @@ wiki : An object-oriented computer programming language commonly used to create 
 <ul>
 <li>Primitive <code>vs</code> non-primitive</li>
 <li>Falsy <code>vs</code> Truthy</li>
-<li>Function</li>
+<li>Function and Hoisting</li>
 <li>Scope</li>
 <li>IIFE</li>
 <li>Objects</li>
-<li>Literals <code>vs</code> Wrappers</li>
+<li>Literals <code>vs</code> Wrappers and Immutable <code>vs</code> non-Immutable ( primitives section, find in primitives chapter in ebook )</li>
+<li>Inheritance</li>
 <li>this</li>
 <li>Closure</li>
 <li>Synchronous <code>vs</code> Asynchronous</li>
@@ -74,97 +56,853 @@ wiki : An object-oriented computer programming language commonly used to create 
 </ul>
 <h3 id="topics-which-are-not-covered">Topics which are not covered</h3>
 <ul>
-<li>apply , call , bind , this</li>
+<li>Object.defineProperties or propertyDescriptor and accessors.</li>
 <li>unicode</li>
 <li>Date</li>
 <li>Math</li>
 <li>Regular expressions</li>
 <li>module loaders</li>
 </ul>
-<h3 id="welcome-to-github-pages-">Welcome to GitHub Pages.</h3>
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
-<p>Sometimes you want numbered lists:</p>
-<ol>
-<li>One</li>
-<li>Two</li>
-<li>Three</li>
-</ol>
-<p>Sometimes you want bullet points:</p>
+<h3 id="1-primitive-vs-non-primitive">1. Primitive <code>vs</code> non-primitive</h3>
+<p>Primitive : Compared by value.</p>
 <ul>
-<li>Start a line with a star</li>
-<li>Profit!</li>
+<li>Booleans: true, false</li>
+<li>Numbers: 1736, 1.351</li>
+<li>Strings: &#39;abc&#39;, &quot;abc&quot;</li>
+<li>Two “nonvalues”: undefined, null</li>
 </ul>
-<p>Alternatively,</p>
+<pre><code class="lang-javascript">&gt; 3 === 3
+true
+&gt; &#39;abc&#39; === &#39;abc&#39;
+true
+</code></pre>
+<p>non-primitive :
+All nonprimitive values are objects. The most common kinds of objects are:</p>
 <ul>
-<li>Dashes work just as well</li>
-<li>And if you have sub points, put two spaces before the dash or star:<ul>
-<li>Like this</li>
+<li>Objects (Literals)</li>
 </ul>
-</li>
-</ul>
-<p>If you want to embed images, this is how you do it:</p>
-<p><img src="https://octodex.github.com/images/yaktocat.png" alt="Image of Yaktocat"></p>
-<p>If you&#39;d like to quote someone, use the &gt; character before the line:</p>
-<blockquote>
-<p>Coffee. The finest organic suspension ever devised... I beat the Borg with it.</p>
-<ul>
-<li>Captain Janeway</li>
-</ul>
-</blockquote>
-<p>There are many different ways to style code with GitHub&#39;s markdown. If you have inline code blocks, wrap them in backticks: <code>var example = true</code>.  If you&#39;ve got a longer block of code, you can indent with four spaces:</p>
-<pre><code>if (isAwesome){
-  return true
-}
-</code></pre><p>GitHub also supports something called code fencing, which allows for multiple lines without indentation:</p>
-<pre><code>if (isAwesome){
-  return true
-}
-</code></pre><p>And if you&#39;d like to use syntax highlighting, include the language:</p>
-<pre><code class="lang-javascript">if (isAwesome){
-  return true
+<pre><code class="lang-javascript">
+{
+    firstName: &#39;Jane&#39;,
+    lastName: &#39;Doe&#39;
 }
 </code></pre>
 <ul>
-<li>[x] @mentions, #refs, <a href="">links</a>, <strong>formatting</strong>, and <del>tags</del> supported</li>
-<li>[x] list syntax required (any unordered or ordered list supported)</li>
-<li>[x] this is a complete item</li>
-<li>[ ] this is an incomplete item</li>
+<li>Arrays (Literals): </li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>First Header</th>
-<th>Second Header</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Content from cell 1</td>
-<td>Content from cell 2</td>
-</tr>
-<tr>
-<td>Content in the first column</td>
-<td>Content in the second column</td>
-</tr>
-</tbody>
-</table>
-<h3 id="designer-templates">Designer Templates</h3>
-<p>We’ve crafted some handsome templates for you to use. Go ahead and click &#39;Continue to layouts&#39; to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
-<h3 id="creating-pages-manually">Creating pages manually</h3>
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-<h3 id="authors-and-contributors">Authors and Contributors</h3>
-<p>You can @mention a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (@defunkt), PJ Hyett (@pjhyett), and Tom Preston-Werner (@mojombo) founded GitHub.</p>
-<h3 id="support-or-contact">Support or Contact</h3>
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
-<!-- <html>
-<head>
-    <title>About Me | My Website</title>
-</head>
-<body>
-    <h1>About Me</h1>
-    <p>I like long walks on the beach. <strong>Plus I rock at DocPad!</strong></p>
-</body>
-</html> -->
+<pre><code class="lang-javascript">[&#39;item1&#39;,&#39;item2&#39;];
+</code></pre>
+<p>compared by reference.
+Identities are compared; every value has its own identity:</p>
+<pre><code class="lang-javascript">&gt; ({} === {})  // two different empty objects
+false
+
+&gt; var obj1 = {};
+&gt; var obj2 = obj1;
+&gt; obj1 === obj2
+true
+</code></pre>
+<h3 id="non-values">non-values</h3>
+<p>To represent missing information in language.</p>
+<pre><code class="lang-javascript">undefined
+</code></pre>
+<blockquote>
+<p>no value, non existence or Uninitialized or missing values are reprsented as undefined</p>
+</blockquote>
+<pre><code class="lang-javascript">null
+</code></pre>
+<blockquote>
+<p>null means “no object.” It is used as a nonvalue whenever an object is expected (parameters, last in a chain of objects, etc.).( no properties for both not event toString())</p>
+</blockquote>
+<h4 id="2-falsy-vs-truthy-">2. Falsy <code>vs</code> Truthy :</h4>
+<p>Whenever JavaScript expects a boolean value (e.g., for the condition of an if statement)
+Falsy values in language, equality or comparision check not needed</p>
+<ul>
+<li>undefined, null</li>
+<li>Boolean: false</li>
+<li>Number: 0, NaN</li>
+<li>String: &#39;&#39;</li>
+</ul>
+<pre><code class="lang-javascript">var falsyArr = [0, undefined, null, &#39;&#39;, NaN];
+
+falsyArr.forEach(function(element, index) {
+    if (element)
+        console.log(&#39;Truthy value : &#39;, element);
+    else
+        console.log(&#39;Falsy value : &#39;, element);
+});
+</code></pre>
+<ul>
+<li>Truthy values ( Note : Object and empty array are considered to be true )</li>
+</ul>
+<pre><code>var truthyArr = [1, -1, true, &#39;string&#39;, [],{},function(){},RegExp];
+
+truthyArr.forEach(function(element, index) {
+    if (element)
+        console.log(&#39;Truthy value : &#39;, element);
+    else
+        console.log(&#39;Falsy value : &#39;, element);
+});
+</code></pre><h3 id="functions">Functions</h3>
+<p>Functions are values that can be called. One way of defining a function is called a function declaration. For example, the following code defines the function id that has a single parameter, x:</p>
+<pre><code class="lang-javascript">function id(x) {
+    return x;
+}
+</code></pre>
+<p>The return statement returns a value from id. You can call a function by mentioning its name, followed by arguments in parentheses</p>
+<pre><code class="lang-javascript">&gt; id(&#39;hello&#39;)
+&#39;hello&#39;
+</code></pre>
+<p>If you don’t return anything from a function, undefined is returned (implicitly):</p>
+<pre><code class="lang-javascript">&gt; function f() { }
+&gt; f()
+undefined
+</code></pre>
+<p>The Three Roles of Functions in JavaScript
+Once you have defined a function as just shown, it can play several roles:
+Nonmethod function (“normal function”)
+You can call a function directly. Then it works as a normal function. Here’s an example invocation:</p>
+<pre><code class="lang-javascript">id(&#39;hello&#39;)
+</code></pre>
+<p>Constructor
+You can invoke a function via the new operator. Then it becomes a constructor, a factory for objects. Here’s an example invocation:</p>
+<pre><code class="lang-javascript">new Date() // returns an object.
+</code></pre>
+<p>Method
+You can store a function in a property of an object, which turns it into a method that you can invoke via that object. Here’s an example invocation:</p>
+<pre><code class="lang-javascript">obj.method()
+</code></pre>
+<p>“Parameter” <code>Versus</code> “Argument”
+The terms parameter and argument are often used interchangeably, Parameters are used to define a function. They are also called formal parameters and formal arguments. In the following example, param1 and param2 are parameters:</p>
+<pre><code class="lang-javascript">function foo(param1, param2) {
+    ...
+}
+</code></pre>
+<p>Arguments are used to invoke a function. They are also called actual parameters and actual arguments. In the following example, 3 and 7 are arguments:</p>
+<pre><code class="lang-javascript">foo(3, 7);
+</code></pre>
+<p>Defining Functions
+This section describes three ways to create a function:</p>
+<pre><code class="lang-javascript">Via a function expression
+Via a function declaration
+Via the constructor Function()
+</code></pre>
+<p>All functions are objects, instances of <code>Function</code>:</p>
+<pre><code class="lang-javascript">function id(x) {
+    return x;
+}
+console.log(id instanceof Function); // true
+</code></pre>
+<p>Therefore, functions get their methods from Function.prototype.</p>
+<p>Function Expressions
+A function expression produces a <code>value—a</code> function object. For example:</p>
+<pre><code class="lang-javascript">var add = function (x, y) { return x + y };
+console.log(add(2, 3)); // 5
+</code></pre>
+<p>The preceding code assigned the result of a function expression to the variable add and called it via that variable. The value produced by a function expression can be assigned to a variable (as shown in the last example), passed as an argument to another function, and more. Because normal function expressions don’t have a name, they are also called <code>anonymous function expressions</code>.</p>
+<p>Named function expressions</p>
+<p>You can give a function expression a name. Named function expressions allow a function expression to refer to itself, which is useful for self-recursion:</p>
+<pre><code class="lang-javascript">var fac = function me(n) {
+    if (n &gt; 0) {
+        return n * me(n-1);
+    } else {
+        return 1;
+    }
+};
+console.log(fac(3)); // 6
+
+var fac = function(n) {
+    if (n &gt; 0) {
+        return n * fac(n-1);
+    } else {
+        return 1;
+    }
+};
+console.log(fac(3)); // 6
+</code></pre>
+<p>NOTE
+The name of a named function expression is only accessible inside the function expression:</p>
+<pre><code class="lang-javascript">var repeat = function me(n, str) {
+    return n &gt; 0 ? str + me(n-1, str) : &#39;&#39;;
+};
+console.log(repeat(3, &#39;Yeah&#39;)); // YeahYeahYeah
+console.log(me); // ReferenceError: me is not defined
+</code></pre>
+<p>Function Declarations
+The following is a function declaration:</p>
+<pre><code class="lang-javascript">function add(x, y) {
+    return x + y;
+}
+</code></pre>
+<p>A function declaration declares a new variable, creates a function object, and assigns it to the variable.</p>
+<p>The Function Constructor
+The constructor Function() evaluates JavaScript code stored in strings. For example, the following code is equivalent to the previous example:</p>
+<pre><code>var add = new Function(&#39;x&#39;, &#39;y&#39;, &#39;return x + y&#39;);
+</code></pre><p>####Hoisting
+Hoisting means “moving to the beginning of a scope.” Function declarations are hoisted completely, variable declarations only partially.
+Function declarations are completely hoisted. That allows you to call a function before it has been declared:</p>
+<pre><code class="lang-javascript">foo();
+function foo() {  // this function is hoisted
+    ...
+}
+</code></pre>
+<p>The reason the preceding code works is that JavaScript engines move the declaration of foo to the beginning of the scope. They execute the code as if it looked like this:</p>
+<pre><code class="lang-javascript">function foo() {
+    ...
+}
+foo();
+
+function foo() {
+    bar();  // OK, bar is hoisted
+    function bar() {
+        ...
+    }
+}
+
+function foo() {
+    bar();  // Not OK, bar is still undefined
+    var bar = function () {
+        // ...
+    };
+}
+</code></pre>
+<p>var declarations are hoisted, too, but only the declarations, not assignments made with them. Therefore, using a var declaration and a function expression similarly to the previous example results in an error:</p>
+<pre><code class="lang-javascript">foo();  // TypeError: undefined is not a function
+var foo = function () {
+    ...
+};
+</code></pre>
+<p>Only the variable declaration is hoisted. The engine executes the preceding code as:</p>
+<pre><code class="lang-javascript">var foo;
+foo();  // TypeError: undefined is not a function
+foo = function () {
+    ...
+};
+</code></pre>
+<p>The Name of a Function
+Most JavaScript engines support the nonstandard property name for function objects. Function declarations have it:</p>
+<pre><code class="lang-javascript">&gt; function f1() {}
+&gt; f1.name
+&#39;f1&#39;
+</code></pre>
+<p>The name of anonymous function expressions is the empty string:</p>
+<pre><code class="lang-javascript">&gt; var f2 = function () {};
+&gt; f2.name
+&#39;&#39;
+</code></pre>
+<p>Named function expressions, however, do have a name:</p>
+<pre><code class="lang-javascript">&gt; var f3 = function myName() {};
+&gt; f3.name
+&#39;myName&#39;
+</code></pre>
+<p>The name of a function is useful for debugging. Some people always give their function expressions names for that reason.
+Which Is Better: A Function Declaration or a Function Expression?
+Should you prefer a function declaration like the following?</p>
+<pre><code class="lang-javascript">function id(x) {
+    return x;
+}
+</code></pre>
+<p>Or the equivalent combination of a var declaration plus a function expression?</p>
+<pre><code class="lang-javascript">var id = function (x) {
+    return x;
+};
+</code></pre>
+<p>They are basically the same, but function declarations have two advantages over function expressions:
+They are hoisted (see Hoisting), so you can call them before they appear in the source code.
+They have a name (see The Name of a Function). However, JavaScript engines are getting better at inferring the names of anonymous function expressions.</p>
+<p>More Control over Function Calls: call(), apply(), and bind()
+call(), apply(), and bind() are methods that all functions have (remember that functions are objects and therefore have methods). They can supply a value for <code>this</code> when invoking a method and thus are mainly interesting in an object-oriented context (see Calling Functions While Setting this: call(), apply(), and bind()). <code>This</code> section explains two use cases for nonmethods.
+<code>func.apply(thisValue, argArray)</code>
+This method uses the elements of argArray as arguments while calling the function func; that is, the following two expressions are equivalent:</p>
+<pre><code class="lang-javascript">func(arg1, arg2, arg3)
+func.apply(null, [arg1, arg2, arg3])
+</code></pre>
+<p>thisValue is the value that this has while executing func. It is not needed in a non-object-oriented setting and is thus null here.
+apply() is useful whenever a function accepts multiple arguments in an array-like manner, but not an array.
+Thanks to apply(), we can use Math.max() (see Other Functions) to determine the maximum element of an array:</p>
+<pre><code class="lang-javascript">&gt; Math.max(17, 33, 2)
+33
+&gt; Math.max.apply(null, [17, 33, 2])
+33
+`
+</code></pre>
+<p>func.bind(thisValue, arg1, ..., argN)
+This performs partial function application—a new function is created that calls func with this set to thisValue and the following arguments: first arg1 until argN, and then the actual arguments of the new function. thisValue is not needed in the following non-object-oriented setting, which is why it is null.
+Here, we use bind() to create a new function plus1() that is like add(), but only requires the parameter y, because x is always 1:</p>
+<pre><code class="lang-javascript">function add(x, y) {
+    return x + y;
+}
+var plus1 = add.bind(null, 1);
+console.log(plus1(5));  // 6
+</code></pre>
+<p>In other words, we have created a new function that is equivalent to the following code:</p>
+<pre><code class="lang-javascript">function plus1(y) {
+    return add(1, y);
+}
+</code></pre>
+<h3 id="scope">Scope</h3>
+<p>Declaring a Variable
+In JavaScript, you declare a variable via a var statement before you use it:</p>
+<pre><code class="lang-javascript">var foo;
+foo = 3; // OK, has been declared
+bar = 5; // not OK, an undeclared variable
+</code></pre>
+<p>You can also combine a declaration with an assignment, to immediately initialize a variable:</p>
+<pre><code class="lang-javascript">var foo = 3;
+</code></pre>
+<p>The value of an uninitialized variable is undefined:</p>
+<pre><code class="lang-javascript">&gt; var x;
+&gt; x
+
+undefined
+</code></pre>
+<p>The scope of a variable
+The scope of a variable are the locations where it is <code>accessible</code>. For example:</p>
+<pre><code class="lang-javascript">function foo() {
+    var x;
+}
+```javascript
+Here, the direct scope of x is the function foo().
+
+Nested :
+
+```javascript
+function foo(arg) {
+    function bar() {
+        console.log(&#39;arg: &#39;+arg);
+    }
+    bar();
+}
+console.log(foo(&#39;hello&#39;)); // arg: hello
+</code></pre>
+<p>Shadowing :</p>
+<pre><code class="lang-javascript">var x = &quot;global&quot;;
+function f() {
+    var x = &quot;local&quot;;
+    console.log(x); // local
+}
+f();
+console.log(x); // global
+</code></pre>
+<p>Variables Are Function-Scoped
+Most mainstream languages are <code>block-scoped</code>: variables “live inside” the innermost surrounding code block. Here is an example from Java:</p>
+<pre><code class="lang-java">public static void main(String[] args) {
+    { // block starts
+        int foo = 4;
+    } // block ends
+    System.out.println(foo); // Error: cannot find symbol
+}
+</code></pre>
+<p>In contrast, JavaScript’s variables are <code>function-scoped</code>: only functions introduce new scopes; blocks are ignored when it comes to scoping. For example:</p>
+<pre><code class="lang-javascript">function main() {
+    { // block starts
+        var foo = 4;
+    } // block ends
+    console.log(foo); // 4
+}
+( Note : ES6 changed them `let` &amp; &#39;const&#39;)
+</code></pre>
+<p>Variable Hoisting:</p>
+<pre><code class="lang-javascript">
+function f() {
+    console.log(bar);  // undefined
+    var bar = &#39;abc&#39;;
+    console.log(bar);  // abc
+}
+
+function f() {
+    var bar;
+    console.log(bar);  // undefined
+    bar = &#39;abc&#39;;
+    console.log(bar);  // abc
+}
+
+
+&gt; var x = 123;
+&gt; var x;
+&gt; x
+123
+</code></pre>
+<p>###IIFE Immediately invoked function expression (IIFE, pronounced “iffy”)</p>
+<ul>
+<li>It is immediately invoked</li>
+<li>It must be an expression</li>
+<li>The trailing semicolon is required
+```javascript
+function f() {
+  if (condition) {<pre><code>  var tmp = ...;
+  ...
+</code></pre>  }
+  // tmp still exists here
+  // =&gt; not what we want
+}</li>
+</ul>
+<p>function f() {
+    if (condition) {
+        (function () {  // open block
+            var tmp = ...;
+            ...
+        }());  // close block
+    }
+}</p>
+<p>(function () { // open IIFE
+    // inside IIFE
+}()); // close IIFE</p>
+<pre><code>
+IIFE with params : 
+```javascript
+var x = 23;
+(function (twice) {
+    console.log(twice);
+}(x * 2));
+</code></pre><p>Best Practice: Avoid Creating Global Variables
+Global variables have two disadvantages. First, pieces of software that rely on global variables are subject to side effects; they are less robust, behave less predictably, and are less reusable.
+Second, all of the JavaScript on a web page shares the same global variables: </p>
+<blockquote>
+<p>your code, built-ins, analytics code, social media buttons, and so on.</p>
+</blockquote>
+<p>That means that name clashes can become a problem. That is why it is best to hide as many variables from the global scope as possible. For example, don’t do this:</p>
+<pre><code class="lang-javascript">&lt;!-- Don’t do this --&gt;
+&lt;script&gt;
+    // Global scope
+    var tmp = generateData();
+    processData(tmp);
+    persistData(tmp);
+&lt;/script&gt;
+</code></pre>
+<p>The variable tmp becomes global, because its declaration is executed in global scope. But it is only used locally. Hence, we can use an IIFE (see Introducing a New Scope via an IIFE) to hide it inside a nested scope:</p>
+<pre><code class="lang-javascript">&lt;script&gt;
+    (function () {  // open IIFE
+        // Local scope
+        var tmp = generateData();
+        processData(tmp);
+        persistData(tmp);
+    }());  // close IIFE
+&lt;/script&gt;
+</code></pre>
+<h3 id="objects">Objects</h3>
+<p>All nonprimitive values are objects. The most common kinds of objects are:
+Plain objects, which can be created by object literals (see Single Objects):</p>
+<pre><code class="lang-javascript">{
+    firstName: &#39;Jane&#39;,
+    lastName: &#39;Doe&#39;
+}
+</code></pre>
+<p>The preceding object has two properties: the value of property firstName is &#39;Jane&#39; and the value of property lastName is &#39;Doe&#39;.</p>
+<p>Arrays, which can be created by array literals (see Arrays):</p>
+<pre><code class="lang-javascript">[ &#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39; ]
+</code></pre>
+<p>The preceding array has three elements that can be accessed via numeric indices. For example, the index of &#39;apple&#39; is 0.
+Regular expressions, which can be created by regular expression literals (see Regular Expressions):</p>
+<pre><code class="lang-javascript">/^a+b+$/
+</code></pre>
+<p>Single Object , each property is a (key, value) pair</p>
+<pre><code class="lang-javascript">var jane = {
+    name: &#39;Jane&#39;,
+
+    describe: function () {
+        return &#39;Person named &#39;+this.name;
+    }
+};
+
+Dot Operator (.): Accessing Properties via Fixed Keys
+
+```javascript
+    jane.name // &#39;Jane&#39;
+    jane.describe(); // &#39;Person named Jane&#39;;
+</code></pre>
+<p>Arbitrary Property Keys : </p>
+<pre><code class="lang-javascript">&gt; var obj = { &#39;not an identifier&#39;: 123 };
+&gt; obj[&#39;not an identifier&#39;]
+123
+&gt; obj[&#39;not an identifier&#39;] = 456;
+</code></pre>
+<p>Extracting Methods : 
+If you extract a method, it loses its connection with the object.</p>
+<pre><code class="lang-javascript">
+var jane = {
+    name: &#39;Jane&#39;,
+
+    describe: function () {
+        return &#39;Person named &#39;+this.name;
+    }
+};
+
+var func = jane.describe;
+func()
+TypeError: Cannot read property &#39;name&#39; of undefined
+
+sol :
+
+var func2 = jane.describe.bind(jane);
+func2()
+&#39;Person named Jane&#39;
+</code></pre>
+<p>Getting properties</p>
+<p>The dot operator lets you “get” a property (read its value). Here are some examples:</p>
+<pre><code class="lang-javascript">&gt; jane.name  // get property `name`
+&#39;Jane&#39;
+&gt; jane.describe  // get property `describe`
+[Function]
+</code></pre>
+<p>Getting a property that doesn’t exist returns undefined:</p>
+<pre><code class="lang-javascript">&gt; jane.unknownProperty
+undefined
+</code></pre>
+<p>Calling methods</p>
+<p>The dot operator is also used to call methods:</p>
+<pre><code class="lang-javascript">&gt; jane.describe()  // call method `describe`
+&#39;Person named Jane&#39;
+</code></pre>
+<p>Setting properties</p>
+<p>You can use the assignment operator (=) to set the value of a property referred to via the dot notation. For example:</p>
+<pre><code class="lang-javascript">&gt; jane.name = &#39;John&#39;;  // set property `name`
+&gt; jane.describe()
+&#39;Person named John&#39;
+</code></pre>
+<p>If a property doesn’t exist yet, setting it automatically creates it. If a property already exists, setting it changes its value.</p>
+<p>Deleting properties</p>
+<p>The delete operator lets you completely remove a property (the whole key-value pair) from an object. For example:</p>
+<pre><code class="lang-javascript">&gt; var obj = { hello: &#39;world&#39; };
+&gt; delete obj.hello
+true
+&gt; obj.hello
+undefined
+</code></pre>
+<p>Bracket Operator ([]): Accessing Properties via Computed Keys :</p>
+<pre><code class="lang-javascript">
+&gt; var obj = { someProperty: &#39;abc&#39; };
+
+&gt; obj[&#39;some&#39; + &#39;Property&#39;]
+&#39;abc&#39;
+
+&gt; var propKey = &#39;someProperty&#39;;
+&gt; obj[propKey]
+&#39;abc&#39;
+
+Getting props:
+&gt; var obj = { &#39;not an identifier&#39;: 123 };
+&gt; obj[&#39;not an identifier&#39;]
+123
+
+calling methods :
+&gt; var obj = { myMethod: function () { return true } };
+&gt; obj[&#39;myMethod&#39;]()
+true
+
+setting props :
+&gt; var obj = {};
+&gt; obj[&#39;anotherProperty&#39;] = &#39;def&#39;;
+&gt; obj.anotherProperty
+&#39;def&#39;
+
+deleting props:
+&gt; var obj = { &#39;not an identifier&#39;: 1, prop: 2 };
+&gt; Object.keys(obj)
+[ &#39;not an identifier&#39;, &#39;prop&#39; ]
+&gt; delete obj[&#39;not an identifier&#39;]
+true
+&gt; Object.keys(obj)
+[ &#39;prop&#39; ]
+</code></pre>
+<p>Objects via Constructor </p>
+<pre><code class="lang-javascript">function Person(name){
+    this.name = name;
+}
+
+Person.prototype.describe = function(){
+    return &#39;Person named &#39;+this.name;
+}
+
+var jane = new Person(&#39;Jane&#39;);
+</code></pre>
+<h3 id="literals-vs-wrapper-functions-">Literals vs Wrapper functions.</h3>
+<ul>
+<li>Primitives are immutable, compared by value ( undefined, null, boolean, string and number )</li>
+<li>non-primitives are mutable ( properties can be added or deleted ), compared by identity rather than value.</li>
+</ul>
+<p>In JavaScript there are 5 primitive types: undefined, null, boolean, string and number. Everything else is an object. The primitive types boolean, string and number can be wrapped by their object counterparts. These objects are instances of the Boolean, String and Number constructors respectively.</p>
+<pre><code class="lang-javascript">typeof true; //&quot;boolean&quot;
+typeof Boolean(true); //&quot;boolean&quot;
+typeof new Boolean(true); //&quot;object&quot;
+typeof (new Boolean(true)).valueOf(); //&quot;boolean&quot;
+
+typeof &quot;abc&quot;; //&quot;string&quot;
+typeof String(&quot;abc&quot;); //&quot;string&quot;
+typeof new String(&quot;abc&quot;); //&quot;object&quot;
+typeof (new String(&quot;abc&quot;)).valueOf(); //&quot;string&quot;
+
+typeof 123; //&quot;number&quot;
+typeof Number(123); //&quot;number&quot;
+typeof new Number(123); //&quot;object&quot;
+typeof (new Number(123)).valueOf(); //&quot;number&quot;
+</code></pre>
+<p>If primitives have no properties, why does &quot;abc&quot;.length return a value?</p>
+<pre><code class="lang-javascript">var a = &quot;abc&quot;;
+a.length
+// actual happening
+(new String(&#39;abc&#39;)).length
+// intermediate object gets destructed
+
+
+var primitive = &quot;september&quot;;
+primitive.vowels = 3;
+//new object created to set property 
+(new String(&quot;september&quot;)).vowels = 3;
+
+primitive.vowels;
+//another new object created to retrieve property 
+(new String(&quot;september&quot;)).vowels; //undefined
+
+
+Really object is created, is there way to verify in a scientific investigation,
+&gt; Yes there is, !!!!!!!!!
+
+String.prototype.returnMe= function() {
+    return this;
+}
+
+var a = &quot;abc&quot;;
+var b = a.returnMe();  
+
+a; //&quot;abc&quot; 
+typeof a; //&quot;string&quot; (still a primitive)
+b; //&quot;abc&quot;
+typeof b; //&quot;object&quot;
+
+
+
+a; //&quot;abc&quot; 
+typeof a; //&quot;string&quot; (still a primitive)
+b; //&quot;abc&quot;
+typeof b; //&quot;object&quot;
+</code></pre>
+<h3 id="inheritance">Inheritance</h3>
+<p>The Prototype Relationship Between Objects</p>
+<p>The prototype relationship between two objects is about inheritance: every object can have another object as its prototype</p>
+<pre><code class="lang-javascript">&gt; __proto__ == [[Prototype]] some javscript engines support __proto__ special key for getting and setting prototype.
+</code></pre>
+<p><img src="http://speakingjs.com/es5/images/spjs_2101.png" alt="prototype chain"></p>
+<p>ex :</p>
+<pre><code class="lang-javascript">var proto = {
+    describe: function () {
+        return &#39;name: &#39;+this.name;
+    }
+};
+var obj = {
+    __proto__: proto,
+    name: &#39;obj&#39;
+};
+
+var obj2 = {
+    name: &#39;obj2&#39;
+};
+
+obj.__proto__ === proto 
+obj2.__proto__ // root Object
+proto.__proto__ // root Object
+</code></pre>
+<p>Overriding</p>
+<pre><code class="lang-javascript">obj.describe = function () { return &#39;overridden&#39; };
+obj.describe()
+</code></pre>
+<p>Prototypes are great for sharing data between objects: several objects get the same prototype, which holds all shared properties.</p>
+<pre><code class="lang-javascript">var jane = {
+    name: &#39;Jane&#39;,
+    describe: function () {
+        return &#39;Person named &#39;+this.name;
+    }
+};
+var tarzan = {
+    name: &#39;Tarzan&#39;,
+    describe: function () {
+        return &#39;Person named &#39;+this.name;
+    }
+};
+</code></pre>
+<p><img src="http://speakingjs.com/es5/images/spjs_2102.png" alt="prototype chain"></p>
+<pre><code class="lang-javascript">
+var PersonProto = {
+    describe: function () {
+        return &#39;Person named &#39;+this.name;
+    }
+};
+var jane = {
+    __proto__: PersonProto,
+    name: &#39;Jane&#39;
+};
+var tarzan = {
+    __proto__: PersonProto,
+    name: &#39;Tarzan&#39;
+};
+
+
+jane.describe()
+tarzan.describe()
+</code></pre>
+<p>Object.create </p>
+<pre><code class="lang-javascript">&gt;syntax
+Object.create(proto, propDescObj?)
+
+var PersonProto = {
+    describe: function () {
+        return &#39;Person named &#39;+this.name;
+    }
+};
+var jane = Object.create(PersonProto, {
+    name: { value: &#39;Jane&#39;, writable: true }
+});
+
+or manually you can create them.
+
+var jane = Object.create(PersonProto);
+jane.name = &#39;Jane&#39;;
+</code></pre>
+<p>Checking Whether a Property Exists</p>
+<p><code>in</code> operator</p>
+<p><code>propKey in obj</code></p>
+<p>or </p>
+<p><code>&lt;target-Object&gt;.hasOwnProperty(propKey)</code></p>
+<p>or </p>
+<p><code>Object.hasOwnProperty(propKey)</code></p>
+<p>Function prototyping.</p>
+<pre><code class="lang-javascript">function Person(name) {
+    this.name = name;
+}
+Person.prototype.describe = function() {
+    return &quot;Person &quot; + this.name;
+};
+
+function Worker(name, title) {
+    Person.call(this, name);
+    this.title = title;
+}
+
+Worker.prototype.__proto__ = Person.prototype;
+Worker.prototype.describe = function() {
+    return this.title + &quot; &quot; + this.name;
+};
+
+var user = new Worker(&#39;Kamesh&#39;,&#39;Devloper&#39;)
+user instanceof Worker
+user instanceof Person
+</code></pre>
+<p>ES5 to help. ( Object.create setting proper prototype internal without manually
+altering the prototype chain )</p>
+<pre><code class="lang-javascript">function Person(name) {
+    this.name = name;
+}
+Person.prototype.describe = function() {
+    return &quot;Person &quot; + this.name;
+};
+
+function Worker(name, title) {
+    Person.call(this, name);
+    this.title = title;
+}
+
+Worker.prototype = Object.create(Person.prototype);
+Worker.prototype.describe = function() {
+    return this.title + &quot; &quot; + this.name;
+};
+
+var user = new Worker(&#39;Kamesh&#39;,&#39;Devloper&#39;)
+user instanceof Worker
+user instanceof Person
+</code></pre>
+<p>How to call super function ? is there super available in javascript
+No but we can mimic it.</p>
+<pre><code class="lang-javascript">user.describe(); // Developer Kamesh.
+
+Worker.prototype.describe = function() {
+    return this.__proto__ // worker prototype
+                .__proto__ // person prototype
+                .describe.apply(this,arguments); // person describe fn.
+};
+
+or 
+
+Worker.prototype.describe = function() {
+    return Person.describe.apply(this,arguments); // person describe fn.
+};
+</code></pre>
+<p>What does “this” actually mean and how is it decided?</p>
+<p> For example, if I have a class Boat(), which has a method moveBoat(), when refering to “this” inside of the moveBoat() method, we are actually accessing the newly created object of Boat().</p>
+<pre><code class="lang-java">class Boat{
+    boolean isReady(){
+        return true;
+    }
+    public boolean moveBoat(){
+        return this.isReady(); // this refers to newly created object.
+    }
+
+    public static void main(String[] args) {
+        Boat miniTitanic = new Boat();
+        System.out.println(miniTitanic.moveBoat());
+    }
+}
+</code></pre>
+<p>however it is not the only rule and “this” can often refer to a different <code>object</code> from a different <code>execution context</code></p>
+<blockquote>
+<p>function caller determines <code>this</code> context.</p>
+</blockquote>
+<pre><code class="lang-javascript">function describe(){
+    console.log(&#39;context &#39;,this);
+    console.log(&#39;User was identified as &#39;+this.name);
+}
+
+var jane = {
+    &#39;name&#39;: &#39;Jane&#39;,
+    &#39;describe&#39;: describe // method
+};
+var tarzan = {
+    name: &#39;Tarzan&#39;,
+    describe: describe // method;
+};
+
+jane.describe();
+tarzan.describe();
+</code></pre>
+<p>or </p>
+<blockquote>
+<p>Remember call,apply and bind. which can invoke the function
+with provided context <code>this</code> and arguments.</p>
+</blockquote>
+<pre><code class="lang-javascript">function describe(){
+    console.log(&#39;context &#39;,this);
+    console.log(&#39;User was identified as &#39;+this.name);
+}
+
+var smith = {
+    name : &#39;smith&#39;
+}
+
+var jane = {
+    name : &#39;jane&#39;
+}
+
+describe.call(smith)
+describe.apply(jane)
+</code></pre>
+<h3 id="synchronous-vs-asynchronous">Synchronous Vs Asynchronous</h3>
+<ul>
+<li>Blocking vs non-blocking</li>
+</ul>
+<h3 id="further-reading-">Further Reading :</h3>
+<p><a href="https://javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/">Primitives</a></p>
+<p><a href="https://javascriptweblog.wordpress.com/2010/05/03/the-value-of-valueof/">valueOf &amp; toString</a></p>
+<p><a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">Context</a></p>
+<p><a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">closures</a></p>
+<p><a href="http://davidshariff.com/blog/javascript-this-keyword/">This</a></p>
+<p><a href="http://www.nfriedly.com/techblog/2009/06/advanced-javascript-objects-arrays-and-array-like-objects/">Array Like Objects</a></p>
+<p><a href="http://www.2ality.com/2010/12/javascripts-prototypal-inheritance.html">GitHub</a></p>
+<p><a href="http://www.2ality.com/2011/03/lightweight-javascript-inheritance-apis.html">Inheritance</a></p>
+<h3 id="video">Video</h3>
+<p><a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">EventLoop</a></p>
+<h3 id="books-">Books :</h3>
+<p><a href="http://www.javascriptenlightenment.com/JavaScript_Enlightenment.pdf">Javascript Englightment</a></p>
+<p><a href="http://speakingjs.com/es5/index.html">ES5</a></p>
+
     <script >(function(){
 	/* Did we just livereload? */
 var log = !!(localStorage && console && console.log && true);

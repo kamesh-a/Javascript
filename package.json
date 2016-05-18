@@ -8,6 +8,10 @@
     "docpad-plugin-livereload": "~2.7.1",
     "docpad-plugin-marked": "~2.3.0"
   },
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-contrib-concat": "latest"
+  },
   "main": "node_modules/.bin/docpad-server",
   "scripts": {
     "start": "node_modules/.bin/docpad-server"
