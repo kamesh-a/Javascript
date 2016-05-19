@@ -19,14 +19,17 @@
     </section>
 
     <section class="main-content">
-      <p>What is Javascript ? </p>
+      <p>What is Javascript ?</p>
+
+<p>client side scripting : </p>
 
 <blockquote>
-<p>client side scripting
-wiki : An object-oriented computer programming language commonly used to create interactive effects within web browsers</p>
+<p>wiki : An object-oriented computer programming language commonly used to create interactive effects within web browsers</p>
 </blockquote>
 
 <ul>
+<li>Event-driven interaction model <code>vs</code> request-response model</li>
+<li>Freeing the runtime to handle concurrent operations</li>
 <li>Client-side JavaScript extends the core language by supplying objects to control a <code>Browser</code> and its <code>Document Object Model (DOM</code>).</li>
 <li>Server-side JavaScript extends the core language by supplying objects relevant to running JavaScript on a <code>server</code>. 
 
@@ -1147,6 +1150,185 @@ with provided context <code>this</code> and arguments.</p>
 
 <span class="pl-smi">describe</span>.<span class="pl-c1">call</span>(smith)
 <span class="pl-smi">describe</span>.<span class="pl-c1">apply</span>(jane)
+</pre></div>
+
+<h3>
+<a id="closure" class="anchor" href="#closure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Closure</h3>
+
+<blockquote>
+<p>The functions defined in the closure 'remember' the environment in which they were created</p>
+
+<p>Each function stays connected to the variables of the functions that surround it.</p>
+</blockquote>
+
+<p>Normal : </p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">createIncrementor</span>(<span class="pl-smi">start</span>) {
+    start<span class="pl-k">++</span>
+    <span class="pl-k">return</span> start;
+}
+
+<span class="pl-en">createIncrementor</span>(<span class="pl-c1">5</span>) </pre></div>
+
+<p>Closure : </p>
+
+<div class="highlight highlight-source-js"><pre>
+Ex<span class="pl-k">-</span><span class="pl-c1">1</span> <span class="pl-k">:</span> 
+<span class="pl-k">function</span> <span class="pl-en">createIncrementor</span>(<span class="pl-smi">start</span>) {
+    <span class="pl-k">return</span> <span class="pl-k">function</span> () {  <span class="pl-c">// (1)</span>
+        <span class="pl-k">return</span> start<span class="pl-k">++</span>;
+    }
+}
+
+<span class="pl-k">var</span> inc <span class="pl-k">=</span> <span class="pl-en">createIncrementor</span>(<span class="pl-c1">5</span>);
+<span class="pl-k">&gt;</span> <span class="pl-en">inc</span>() <span class="pl-c">// 6</span>
+<span class="pl-k">&gt;</span> <span class="pl-en">inc</span>() <span class="pl-c">// 7</span>
+<span class="pl-k">&gt;</span> <span class="pl-en">inc</span>() <span class="pl-c">// 8</span>
+
+
+<span class="pl-k">var</span> obj <span class="pl-k">=</span>  {
+    <span class="pl-en">incrementor</span> <span class="pl-k">:</span>  <span class="pl-k">function</span>(<span class="pl-smi">start</span>){
+        <span class="pl-k">return</span> <span class="pl-k">function</span> () {  <span class="pl-c">// (1)</span>
+            <span class="pl-k">return</span> start<span class="pl-k">++</span>;
+        }
+    }
+}
+
+<span class="pl-k">var</span> inc <span class="pl-k">=</span> <span class="pl-smi">obj</span>.<span class="pl-en">incrementor</span>(<span class="pl-c1">5</span>);
+ <span class="pl-k">&gt;</span> <span class="pl-en">inc</span>()
+ <span class="pl-k">&gt;</span> <span class="pl-en">inc</span>()
+ <span class="pl-k">&gt;</span> <span class="pl-en">inc</span>()
+
+Ex<span class="pl-k">-</span><span class="pl-c1">2</span> <span class="pl-k">:</span> 
+
+<span class="pl-k">function</span> <span class="pl-en">init</span>() {
+    <span class="pl-k">var</span> name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>Javascript<span class="pl-pds">"</span></span>; <span class="pl-c">// name is a local variable created by init</span>
+    <span class="pl-k">function</span> <span class="pl-en">displayName</span>() { <span class="pl-c">// displayName() is the inner function, a closure</span>
+        <span class="pl-en">alert</span>(name); <span class="pl-c">// use variable declared in the parent function    </span>
+    }
+    <span class="pl-en">displayName</span>();
+}
+<span class="pl-en">init</span>();
+
+<span class="pl-k">function</span> <span class="pl-en">makeFunc</span>() {
+    <span class="pl-k">var</span> name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>Javascript<span class="pl-pds">"</span></span>;
+
+    <span class="pl-k">function</span> <span class="pl-en">displayName</span>() {
+        <span class="pl-en">alert</span>(name);
+    }
+    <span class="pl-k">return</span> displayName;
+}
+
+<span class="pl-k">var</span> myFunc <span class="pl-k">=</span> <span class="pl-en">makeFunc</span>();
+<span class="pl-en">myFunc</span>();</pre></div>
+
+<blockquote>
+<p>We can private variables, simulating <code>private members</code> as in other programming languages </p>
+</blockquote>
+
+<div class="highlight highlight-source-js"><pre>Ex<span class="pl-k">-</span><span class="pl-c1">3</span> <span class="pl-k">:</span>
+<span class="pl-k">var</span> counter <span class="pl-k">=</span> (<span class="pl-k">function</span>() {
+    <span class="pl-k">var</span> privateCounter <span class="pl-k">=</span> <span class="pl-c1">0</span>;
+
+    <span class="pl-k">function</span> <span class="pl-en">changeBy</span>(<span class="pl-smi">val</span>) {
+        privateCounter <span class="pl-k">+=</span> val;
+    }
+    <span class="pl-k">return</span> {
+        <span class="pl-en">increment</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
+            <span class="pl-en">changeBy</span>(<span class="pl-c1">1</span>);
+        },
+        <span class="pl-en">decrement</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
+            <span class="pl-en">changeBy</span>(<span class="pl-k">-</span><span class="pl-c1">1</span>);
+        },
+        <span class="pl-en">value</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
+            <span class="pl-k">return</span> privateCounter;
+        }
+    };
+})();
+
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">counter</span>.<span class="pl-c1">value</span>()); <span class="pl-c">// logs 0</span>
+<span class="pl-smi">counter</span>.<span class="pl-en">increment</span>();
+<span class="pl-smi">counter</span>.<span class="pl-en">increment</span>();
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">counter</span>.<span class="pl-c1">value</span>()); <span class="pl-c">// logs 2</span>
+<span class="pl-smi">counter</span>.<span class="pl-en">decrement</span>();
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">counter</span>.<span class="pl-c1">value</span>()); <span class="pl-c">// logs 1</span>
+</pre></div>
+
+<p>Creating closures in loops: A common mistake</p>
+
+<div class="highlight highlight-source-js"><pre>Ex<span class="pl-k">-</span><span class="pl-c1">4</span> <span class="pl-k">:</span> 
+<span class="pl-k">var</span> arr <span class="pl-k">=</span> [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>];
+<span class="pl-k">var</span> fnArr <span class="pl-k">=</span> []
+<span class="pl-k">for</span> (<span class="pl-k">var</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-smi">arr</span>.<span class="pl-c1">length</span>; i<span class="pl-k">++</span>) {
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(arr[i])
+    <span class="pl-smi">fnArr</span>.<span class="pl-c1">push</span>(<span class="pl-k">function</span>() {
+        <span class="pl-k">return</span> arr[i]
+    });
+};
+
+<span class="pl-k">???</span> Undefined 
+
+<span class="pl-k">var</span> arr <span class="pl-k">=</span> [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>];
+<span class="pl-k">var</span> fnArr <span class="pl-k">=</span> []
+<span class="pl-k">for</span> (<span class="pl-k">var</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-smi">arr</span>.<span class="pl-c1">length</span>; i<span class="pl-k">++</span>) {
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(arr[i])
+    <span class="pl-smi">fnArr</span>.<span class="pl-c1">push</span>(<span class="pl-k">function</span>() {
+        <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>Index : <span class="pl-pds">'</span></span><span class="pl-k">+</span>i);
+        <span class="pl-k">return</span> arr[i]
+    });
+};
+
+
+<span class="pl-k">function</span> <span class="pl-en">printAll</span>(){
+    <span class="pl-smi">fnArr</span>.<span class="pl-en">forEach</span>( <span class="pl-k">function</span>(<span class="pl-smi">fn</span>, <span class="pl-smi">index</span>) {
+        <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>[<span class="pl-pds">'</span></span><span class="pl-k">+</span>index<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">'</span>] : <span class="pl-pds">'</span></span><span class="pl-k">+</span><span class="pl-en">fn</span>())
+    });
+}
+
+<span class="pl-en">printAll</span>();
+</pre></div>
+
+<blockquote>
+<p>Real-World Scenario while adding event handlers to DOM in for loop</p>
+
+<p>Using closure , yaayy !!!</p>
+</blockquote>
+
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-k">var</span> arr <span class="pl-k">=</span> [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>];
+<span class="pl-k">var</span> fnArr <span class="pl-k">=</span> []
+<span class="pl-k">for</span> (<span class="pl-k">var</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-smi">arr</span>.<span class="pl-c1">length</span>; i<span class="pl-k">++</span>) {
+    <span class="pl-k">var</span> data <span class="pl-k">=</span> arr[i];
+    <span class="pl-smi">fnArr</span>.<span class="pl-c1">push</span>(<span class="pl-k">function</span>() {
+        <span class="pl-k">return</span> data
+    });
+};
+
+<span class="pl-en">printAll</span>();
+</pre></div>
+
+<blockquote>
+<p>but, wait !!! why it's printing just 5</p>
+</blockquote>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> arr <span class="pl-k">=</span> [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>];
+<span class="pl-k">var</span> fnArr <span class="pl-k">=</span> []
+<span class="pl-k">for</span> (<span class="pl-k">var</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-smi">arr</span>.<span class="pl-c1">length</span>; i<span class="pl-k">++</span>) {
+    (<span class="pl-k">function</span>() {
+        <span class="pl-k">var</span> data <span class="pl-k">=</span> arr[i];
+        <span class="pl-smi">fnArr</span>.<span class="pl-c1">push</span>(<span class="pl-k">function</span>() {
+            <span class="pl-k">return</span> data
+        });
+    })();
+};
+
+<span class="pl-k">var</span> arr <span class="pl-k">=</span> [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span class="pl-c1">5</span>];
+<span class="pl-k">var</span> fnArr <span class="pl-k">=</span> []
+<span class="pl-k">for</span> (<span class="pl-k">var</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-smi">arr</span>.<span class="pl-c1">length</span>; i<span class="pl-k">++</span>) {
+    <span class="pl-smi">fnArr</span>.<span class="pl-c1">push</span>(<span class="pl-k">function</span>(<span class="pl-smi">index</span>) {
+        <span class="pl-k">return</span> arr[index]
+    }.<span class="pl-en">bind</span>(<span class="pl-c1">null</span>,i));
+};
 </pre></div>
 
 <h3>
