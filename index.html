@@ -1350,21 +1350,27 @@ Ex<span class="pl-k">-</span><span class="pl-c1">2</span> <span class="pl-k">:</
 <pre><code>
 Ex-1 : 
 function one() {
+    console.log('one');
     two();
-    function two() {
-        three();
-        function three() {
-            console.log('I am at function three');
-        }
-    }
+}
+
+function two() {
+    console.log('two');
+    three();
+}
+
+function three() {
+    console.log('three');
 }
 
 one();
+
 </code></pre>
 
 <p>Classic example of async with <code>setTimeout</code></p>
 
-<div class="highlight highlight-source-js"><pre>ex<span class="pl-k">-</span><span class="pl-c1">1</span> <span class="pl-k">:</span> 
+<div class="highlight highlight-source-js"><pre>
+ex<span class="pl-k">-</span><span class="pl-c1">2</span> <span class="pl-k">:</span> 
 
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>So her we are to sync vs async <span class="pl-pds">'</span></span>);
 <span class="pl-c1">setTimeout</span>(<span class="pl-k">function</span> <span class="pl-en">async</span>(){
@@ -1400,6 +1406,22 @@ ex<span class="pl-k">-</span><span class="pl-c1">3</span> <span class="pl-k">:</
         <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>You clicked the button!<span class="pl-pds">'</span></span>);    
     }, <span class="pl-c1">2000</span>);
 });
+</pre></div>
+
+<p>Blocking <code>vs</code> non-blocking</p>
+
+<div class="highlight highlight-source-js"><pre>ex<span class="pl-k">-</span><span class="pl-c1">4</span> <span class="pl-k">:</span> 
+<span class="pl-k">var</span> fs <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>fs<span class="pl-pds">'</span></span>);
+
+<span class="pl-k">var</span> contents <span class="pl-k">=</span> <span class="pl-smi">fs</span>.<span class="pl-en">readFileSync</span>(<span class="pl-s"><span class="pl-pds">'</span>/Volumes/HD_II/Personal/Learning/nodejs/Docpad/my-new-website/src/node/content.txt<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>utf8<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>File content Sync: <span class="pl-pds">'</span></span><span class="pl-k">+</span>contents);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>Blocking<span class="pl-cce">\n</span><span class="pl-pds">'</span></span>);
+
+
+<span class="pl-k">var</span> contents <span class="pl-k">=</span> <span class="pl-smi">fs</span>.<span class="pl-en">readFile</span>(<span class="pl-s"><span class="pl-pds">'</span>/Volumes/HD_II/Personal/Learning/nodejs/Docpad/my-new-website/src/node/content.txt<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>utf8<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">err</span>,<span class="pl-smi">contents</span>){
+   <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>File content Async: <span class="pl-pds">'</span></span><span class="pl-k">+</span>contents);
+});
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>Non-Blocking<span class="pl-cce">\n</span><span class="pl-pds">'</span></span>);
 </pre></div>
 
 <h3>
