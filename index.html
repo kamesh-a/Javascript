@@ -27,13 +27,14 @@ wiki : An object-oriented computer programming language commonly used to create 
 </blockquote>
 
 <ul>
-<li>Client-side JavaScript extends the core language by supplying objects to control a browser and its Document Object Model (DOM).</li>
-<li>Server-side JavaScript extends the core language by supplying objects relevant to running JavaScript on a server. 
+<li>Client-side JavaScript extends the core language by supplying objects to control a <code>Browser</code> and its <code>Document Object Model (DOM</code>).</li>
+<li>Server-side JavaScript extends the core language by supplying objects relevant to running JavaScript on a <code>server</code>. 
 
 <ol>
-<li>Communicate with a database</li>
-<li>Provide continuity of information from one invocation to another of the application</li>
-<li>Perform file manipulations on a server</li>
+<li>Communicate with a <code>database</code>
+</li>
+<li>Provide continuity of information from one invocation to another of the application </li>
+<li>Perform <code>file</code> manipulations on a server</li>
 </ol>
 </li>
 </ul>
@@ -108,14 +109,21 @@ wiki : An object-oriented computer programming language commonly used to create 
 <p>non-primitive :
 All nonprimitive values are objects. The most common kinds of objects are:</p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-en">Objects</span> (Literals)<span class="pl-k">:</span>
+<ul>
+<li>Objects (Literals)</li>
+</ul>
+
+<div class="highlight highlight-source-js"><pre>
 {
     firstName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Jane<span class="pl-pds">'</span></span>,
     lastName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Doe<span class="pl-pds">'</span></span>
-}
+}</pre></div>
 
-<span class="pl-en">Arrays</span> (Literals)<span class="pl-k">:</span> 
-[<span class="pl-s"><span class="pl-pds">'</span>item1<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>item2<span class="pl-pds">'</span></span>];
+<ul>
+<li>Arrays (Literals): </li>
+</ul>
+
+<div class="highlight highlight-source-js"><pre>[<span class="pl-s"><span class="pl-pds">'</span>item1<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>item2<span class="pl-pds">'</span></span>];
 </pre></div>
 
 <p>compared by reference.
@@ -134,13 +142,17 @@ Identities are compared; every value has its own identity:</p>
 
 <p>To represent missing information in language.</p>
 
-<pre><code>undefined:
-no value, non existence or Uninitialized or missing values are 
-reprsented as undefined
+<div class="highlight highlight-source-js"><pre><span class="pl-c1">undefined</span></pre></div>
 
-null:
-null means “no object.” It is used as a nonvalue whenever an object is expected (parameters, last in a chain of objects, etc.).( no properties for both not event toString())
-</code></pre>
+<blockquote>
+<p>no value, non existence or Uninitialized or missing values are reprsented as undefined</p>
+</blockquote>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c1">null</span></pre></div>
+
+<blockquote>
+<p>null means “no object.” It is used as a nonvalue whenever an object is expected (parameters, last in a chain of objects, etc.).( no properties for both not event toString())</p>
+</blockquote>
 
 <h4>
 <a id="2-falsy-vs-truthy-" class="anchor" href="#2-falsy-vs-truthy-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Falsy <code>vs</code> Truthy :</h4>
@@ -155,7 +167,15 @@ Falsy values in language, equality or comparision check not needed</p>
 <li>String: ''</li>
 </ul>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> falsyArr <span class="pl-k">=</span> [<span class="pl-c1">0</span>, <span class="pl-c1">undefined</span>, <span class="pl-c1">null</span>, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>, <span class="pl-c1">NaN</span>];
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> user <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>data<span class="pl-pds">'</span></span>
+<span class="pl-k">if</span>( user <span class="pl-k">!=</span> <span class="pl-c1">null</span> <span class="pl-k">&amp;&amp;</span> user <span class="pl-k">!=</span> <span class="pl-c1">false</span> <span class="pl-k">&amp;&amp;</span> <span class="pl-k">typeof</span> user <span class="pl-k">!=</span> object ){
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>Do some operations..<span class="pl-pds">'</span></span>)
+}</pre></div>
+
+<p>Simply you can check for Truthy or falsy.</p>
+
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-k">var</span> falsyArr <span class="pl-k">=</span> [<span class="pl-c1">0</span>, <span class="pl-c1">undefined</span>, <span class="pl-c1">null</span>, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>, <span class="pl-c1">NaN</span>];
 
 <span class="pl-smi">falsyArr</span>.<span class="pl-en">forEach</span>(<span class="pl-k">function</span>(<span class="pl-smi">element</span>, <span class="pl-smi">index</span>) {
     <span class="pl-k">if</span> (element)
@@ -181,17 +201,17 @@ truthyArr.forEach(function(element, index) {
 <h3>
 <a id="functions" class="anchor" href="#functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Functions</h3>
 
-<p>Functions are values that can be called. One way of defining a function is called a function declaration. For example, the following code defines the function id that has a single parameter, x:</p>
+<p>Function declaration:</p>
 
-<p>```function id(x) {
-    return x;
-}</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">id</span>(<span class="pl-smi">x</span>) {
+    <span class="pl-k">return</span> x;
+}
+</pre></div>
 
-<pre><code>The return statement returns a value from id. You can call a function by mentioning its name, followed by arguments in parentheses:
-```javascript
-&gt; id('hello')
-'hello'
-</code></pre>
+<p>Invocation or calling a function : </p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">&gt;</span> <span class="pl-en">id</span>(<span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span>)
+<span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span></pre></div>
 
 <p>If you don’t return anything from a function, undefined is returned (implicitly):</p>
 
@@ -200,36 +220,64 @@ truthyArr.forEach(function(element, index) {
 <span class="pl-c1">undefined</span>
 </pre></div>
 
-<p>The Three Roles of Functions in JavaScript
-Once you have defined a function as just shown, it can play several roles:
-Nonmethod function (“normal function”)
-You can call a function directly. Then it works as a normal function. Here’s an example invocation:</p>
+<p>The Three Roles of Functions in JavaScript</p>
+
+<ul>
+<li>normal function</li>
+<li>constructor</li>
+<li>method</li>
+</ul>
+
+<p>Normal function :</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-en">id</span>(<span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span>)</pre></div>
 
-<p>Constructor
-You can invoke a function via the new operator. Then it becomes a constructor, a factory for objects. Here’s an example invocation:</p>
+<p>Constructor : </p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-k">new</span> <span class="pl-en">Date</span>() <span class="pl-c">// returns an object.</span></pre></div>
+<p>You can invoke a function via the <code>new</code> operator. Then it becomes a constructor.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">new</span> <span class="pl-en">Date</span>() <span class="pl-c">// returns an object.</span>
+
+<span class="pl-k">function</span> <span class="pl-en">Person</span>(<span class="pl-smi">name</span>){
+    <span class="pl-v">this</span>.<span class="pl-c1">name</span> <span class="pl-k">=</span> name;
+}
+
+<span class="pl-k">var</span> user <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Person</span>(<span class="pl-s"><span class="pl-pds">'</span>kamesh<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(user);</pre></div>
 
 <p>Method
-You can store a function in a property of an object, which turns it into a method that you can invoke via that object. Here’s an example invocation:</p>
+You can store a <code>function</code> in a <code>property</code> of an <code>object</code>, which turns it into a <code>method</code> that you can invoke via that <code>object</code>. Here’s an example invocation:</p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-smi">obj</span>.<span class="pl-c1">method</span>()</pre></div>
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-k">&lt;</span>obj<span class="pl-k">&gt;</span>.<span class="pl-k">&lt;</span>method<span class="pl-k">&gt;</span>()
 
-<p>“Parameter” <code>Versus</code> “Argument”
-The terms parameter and argument are often used interchangeably, Parameters are used to define a function. They are also called formal parameters and formal arguments. In the following example, param1 and param2 are parameters:</p>
+<span class="pl-k">var</span> user <span class="pl-k">=</span> {
+    name <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Jane<span class="pl-pds">'</span></span>,
+    <span class="pl-en">describe</span> <span class="pl-k">:</span> <span class="pl-k">function</span>(){
+        <span class="pl-k">return</span> <span class="pl-s"><span class="pl-pds">"</span>Hey it's <span class="pl-pds">"</span></span><span class="pl-k">+</span><span class="pl-v">this</span>.<span class="pl-c1">name</span><span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>, How May I help You<span class="pl-pds">"</span></span>;
+    }
+}
+
+user <span class="pl-k">==</span> <span class="pl-k">&lt;</span>obj<span class="pl-k">&gt;</span>
+describe <span class="pl-k">==</span> <span class="pl-k">&lt;</span>method<span class="pl-k">&gt;</span>
+
+<span class="pl-smi">user</span>.<span class="pl-en">describe</span>();
+</pre></div>
+
+<p>“Parameter” <code>Versus</code> “Argument” : 
+The terms <code>parameter</code> and <code>argument</code> are often used interchangeably, Parameters are used to define a function. In the following example, <code>param1</code> and <code>param2</code> are <code>parameters</code>:</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">foo</span>(<span class="pl-smi">param1</span>, <span class="pl-smi">param2</span>) {
     <span class="pl-k">...</span>
 }</pre></div>
 
-<p>Arguments are used to invoke a function. They are also called actual parameters and actual arguments. In the following example, 3 and 7 are arguments:</p>
+<p><code>Arguments</code> are used to <code>invoke</code> a function. In the following example, 3 and 7 are arguments:</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-en">foo</span>(<span class="pl-c1">3</span>, <span class="pl-c1">7</span>);</pre></div>
 
-<p>Defining Functions
-This section describes three ways to create a function:</p>
+<p>Defining Functions :</p>
+
+<p>This section describes three ways to create a function:</p>
 
 <div class="highlight highlight-source-js"><pre>Via a <span class="pl-k">function</span> expression
 Via a <span class="pl-k">function</span> declaration
@@ -244,17 +292,14 @@ Via the constructor <span class="pl-en">Function</span>()</pre></div>
 
 <p>Therefore, functions get their methods from Function.prototype.</p>
 
-<p>Function Expressions
-A function expression produces a <code>value—a</code> function object. For example:</p>
+<p>Function Expressions : </p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> <span class="pl-en">add</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">x</span>, <span class="pl-smi">y</span>) { <span class="pl-k">return</span> x <span class="pl-k">+</span> y };
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-en">add</span>(<span class="pl-c1">2</span>, <span class="pl-c1">3</span>)); <span class="pl-c">// 5</span></pre></div>
 
-<p>The preceding code assigned the result of a function expression to the variable add and called it via that variable. The value produced by a function expression can be assigned to a variable (as shown in the last example), passed as an argument to another function, and more. Because normal function expressions don’t have a name, they are also called <code>anonymous function expressions</code>.</p>
+<p>Named function expressions:</p>
 
-<p>Named function expressions</p>
-
-<p>You can give a function expression a name. Named function expressions allow a function expression to refer to itself, which is useful for self-recursion:</p>
+<p>It allows a function expression to refer to itself, which is useful for self-recursion:</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> <span class="pl-en">fac</span> <span class="pl-k">=</span> <span class="pl-k">function</span> <span class="pl-en">me</span>(<span class="pl-smi">n</span>) {
     <span class="pl-k">if</span> (n <span class="pl-k">&gt;</span> <span class="pl-c1">0</span>) {
@@ -275,8 +320,11 @@ A function expression produces a <code>value—a</code> function object. For exa
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-en">fac</span>(<span class="pl-c1">3</span>)); <span class="pl-c">// 6</span>
 </pre></div>
 
-<p>NOTE
-The name of a named function expression is only accessible inside the function expression:</p>
+<p>NOTE : </p>
+
+<blockquote>
+<p>The <code>name</code> of a <code>named function expression</code> is only accessible inside the function expression:</p>
+</blockquote>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> <span class="pl-en">repeat</span> <span class="pl-k">=</span> <span class="pl-k">function</span> <span class="pl-en">me</span>(<span class="pl-smi">n</span>, <span class="pl-smi">str</span>) {
     <span class="pl-k">return</span> n <span class="pl-k">&gt;</span> <span class="pl-c1">0</span> <span class="pl-k">?</span> str <span class="pl-k">+</span> <span class="pl-en">me</span>(n<span class="pl-k">-</span><span class="pl-c1">1</span>, str) <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>;
@@ -284,37 +332,51 @@ The name of a named function expression is only accessible inside the function e
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-en">repeat</span>(<span class="pl-c1">3</span>, <span class="pl-s"><span class="pl-pds">'</span>Yeah<span class="pl-pds">'</span></span>)); <span class="pl-c">// YeahYeahYeah</span>
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(me); <span class="pl-c">// ReferenceError: me is not defined</span></pre></div>
 
-<p>Function Declarations
-The following is a function declaration:</p>
+<p>Function Declarations :</p>
+
+<blockquote>
+<p>A function declaration declares a new variable, creates a function object, and assigns it to the variable.</p>
+</blockquote>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">add</span>(<span class="pl-smi">x</span>, <span class="pl-smi">y</span>) {
     <span class="pl-k">return</span> x <span class="pl-k">+</span> y;
 }
 </pre></div>
 
-<p>A function declaration declares a new variable, creates a function object, and assigns it to the variable.</p>
-
-<p>The Function Constructor
-The constructor Function() evaluates JavaScript code stored in strings. For example, the following code is equivalent to the previous example:</p>
+<p>The Function Constructor : </p>
 
 <pre><code>var add = new Function('x', 'y', 'return x + y');
+add(2,3)
+
 </code></pre>
 
-<h4>
-<a id="hoisting" class="anchor" href="#hoisting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hoisting</h4>
+<blockquote>
+<p>Using Function constructor is slower than creating functions directly.</p>
+</blockquote>
 
-<p>Hoisting means “moving to the beginning of a scope.” Function declarations are hoisted completely, variable declarations only partially.
-Function declarations are completely hoisted. That allows you to call a function before it has been declared:</p>
+<h3>
+<a id="hoisting-" class="anchor" href="#hoisting-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hoisting :</h3>
+
+<p>Hoisting means “moving to the beginning of a scope.” </p>
+
+<ul>
+<li>Function declarations are hoisted completely</li>
+<li>variable declarations only partially.</li>
+</ul>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-en">foo</span>();
 <span class="pl-k">function</span> <span class="pl-en">foo</span>() {  <span class="pl-c">// this function is hoisted</span>
-    <span class="pl-k">...</span>
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>foo function got invoked.<span class="pl-pds">'</span></span>);
 }</pre></div>
 
-<p>The reason the preceding code works is that JavaScript engines move the declaration of foo to the beginning of the scope. They execute the code as if it looked like this:</p>
+<blockquote>
+<p>AWW!!! How is this possible? </p>
+</blockquote>
+
+<p>The reason the preceding code works is that JavaScript engines move the declaration of foo to the beginning of the scope.</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">foo</span>() {
-    <span class="pl-k">...</span>
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>foo function got invoked.<span class="pl-pds">'</span></span>);
 }
 <span class="pl-en">foo</span>();
 
@@ -333,14 +395,14 @@ Function declarations are completely hoisted. That allows you to call a function
 }
 </pre></div>
 
-<p>var declarations are hoisted, too, but only the declarations, not assignments made with them. Therefore, using a var declaration and a function expression similarly to the previous example results in an error:</p>
+<p>Function expressions are not hoisted : </p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-en">foo</span>();  <span class="pl-c">// TypeError: undefined is not a function</span>
 <span class="pl-k">var</span> <span class="pl-en">foo</span> <span class="pl-k">=</span> <span class="pl-k">function</span> () {
     <span class="pl-k">...</span>
 };</pre></div>
 
-<p>Only the variable declaration is hoisted. The engine executes the preceding code as:</p>
+<p>Engine Executes expression like the following.</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> foo;
 <span class="pl-en">foo</span>();  <span class="pl-c">// TypeError: undefined is not a function</span>
@@ -348,18 +410,17 @@ Function declarations are completely hoisted. That allows you to call a function
     <span class="pl-k">...</span>
 };</pre></div>
 
-<p>The Name of a Function
-Most JavaScript engines support the nonstandard property name for function objects. Function declarations have it:</p>
+<p>Getting a <code>name</code> of function : </p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">&gt;</span> <span class="pl-k">function</span> <span class="pl-en">f1</span>() {}
 <span class="pl-k">&gt;</span> <span class="pl-smi">f1</span>.<span class="pl-c1">name</span>
 <span class="pl-s"><span class="pl-pds">'</span>f1<span class="pl-pds">'</span></span></pre></div>
 
-<p>The name of anonymous function expressions is the empty string:</p>
+<p>The name of anonymous function expressions is the <code>empty</code> string:</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">&gt;</span> <span class="pl-k">var</span> <span class="pl-en">f2</span> <span class="pl-k">=</span> <span class="pl-k">function</span> () {};
-<span class="pl-k">&gt;</span> <span class="pl-smi">f2</span>.<span class="pl-c1">name</span>
-<span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span></pre></div>
+<span class="pl-k">&gt;</span> <span class="pl-en">console</span>.<span class="pl-c1">log</span>( <span class="pl-s"><span class="pl-pds">'</span>name of function : <span class="pl-pds">'</span></span><span class="pl-k">+</span><span class="pl-smi">f2</span>.<span class="pl-c1">name</span> ) ;
+</pre></div>
 
 <p>Named function expressions, however, do have a name:</p>
 
@@ -367,9 +428,10 @@ Most JavaScript engines support the nonstandard property name for function objec
 <span class="pl-k">&gt;</span> <span class="pl-smi">f3</span>.<span class="pl-c1">name</span>
 <span class="pl-s"><span class="pl-pds">'</span>myName<span class="pl-pds">'</span></span></pre></div>
 
-<p>The name of a function is useful for debugging. Some people always give their function expressions names for that reason.
-Which Is Better: A Function Declaration or a Function Expression?
-Should you prefer a function declaration like the following?</p>
+<p>Which Is Better: A Function Declaration or a Function Expression?</p>
+
+<blockquote>
+<p>Should you prefer a function declaration like the following?</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">id</span>(<span class="pl-smi">x</span>) {
     <span class="pl-k">return</span> x;
@@ -380,33 +442,59 @@ Should you prefer a function declaration like the following?</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> <span class="pl-en">id</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">x</span>) {
     <span class="pl-k">return</span> x;
 };</pre></div>
+</blockquote>
 
-<p>They are basically the same, but function declarations have two advantages over function expressions:
-They are hoisted (see Hoisting), so you can call them before they appear in the source code.
-They have a name (see The Name of a Function). However, JavaScript engines are getting better at inferring the names of anonymous function expressions.</p>
+<p>They are basically the same, but function declarations have two advantages over function expressions:</p>
 
-<p>More Control over Function Calls: call(), apply(), and bind()
-call(), apply(), and bind() are methods that all functions have (remember that functions are objects and therefore have methods). They can supply a value for <code>this</code> when invoking a method and thus are mainly interesting in an object-oriented context (see Calling Functions While Setting this: call(), apply(), and bind()). <code>This</code> section explains two use cases for nonmethods.
-<code>func.apply(thisValue, argArray)</code>
-This method uses the elements of argArray as arguments while calling the function func; that is, the following two expressions are equivalent:</p>
+<ul>
+<li>hoisting</li>
+<li>name </li>
+</ul>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-en">func</span>(arg1, arg2, arg3)
-<span class="pl-smi">func</span>.<span class="pl-c1">apply</span>(<span class="pl-c1">null</span>, [arg1, arg2, arg3])</pre></div>
+<p>More Control over Function Calls: <code>call(), apply(), and bind()</code></p>
 
-<p>thisValue is the value that this has while executing func. It is not needed in a non-object-oriented setting and is thus null here.
-apply() is useful whenever a function accepts multiple arguments in an array-like manner, but not an array.
-Thanks to apply(), we can use Math.max() (see Other Functions) to determine the maximum element of an array:</p>
+<p>call <code>func.call(thisValue, argArray)</code> :</p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-k">&gt;</span> <span class="pl-c1">Math</span>.<span class="pl-c1">max</span>(<span class="pl-c1">17</span>, <span class="pl-c1">33</span>, <span class="pl-c1">2</span>)
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> person1 <span class="pl-k">=</span> {firstName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Jon<span class="pl-pds">'</span></span>, lastName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Kuperman<span class="pl-pds">'</span></span>};
+<span class="pl-k">var</span> person2 <span class="pl-k">=</span> {firstName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Kelly<span class="pl-pds">'</span></span>, lastName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>King<span class="pl-pds">'</span></span>};
+
+<span class="pl-k">function</span> <span class="pl-en">say</span>(<span class="pl-smi">greeting</span>) {
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(greeting <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span> <span class="pl-k">+</span> <span class="pl-v">this</span>.<span class="pl-smi">firstName</span> <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span> <span class="pl-k">+</span> <span class="pl-v">this</span>.<span class="pl-smi">lastName</span>);
+}
+
+<span class="pl-smi">say</span>.<span class="pl-c1">call</span>(person1, <span class="pl-s"><span class="pl-pds">'</span>Hello<span class="pl-pds">'</span></span>); <span class="pl-c">// Hello Jon Kuperman</span>
+<span class="pl-smi">say</span>.<span class="pl-c1">call</span>(person2, <span class="pl-s"><span class="pl-pds">'</span>Hello<span class="pl-pds">'</span></span>); <span class="pl-c">// Hello Kelly King</span></pre></div>
+
+<p>Apply : <code>func.apply(thisValue, argArray)</code> : </p>
+
+<div class="highlight highlight-source-js"><pre>Example <span class="pl-c1">1</span> <span class="pl-k">:</span> 
+<span class="pl-k">var</span> person1 <span class="pl-k">=</span> {firstName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Jon<span class="pl-pds">'</span></span>, lastName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Kuperman<span class="pl-pds">'</span></span>};
+<span class="pl-k">var</span> person2 <span class="pl-k">=</span> {firstName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Kelly<span class="pl-pds">'</span></span>, lastName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>King<span class="pl-pds">'</span></span>};
+
+<span class="pl-k">function</span> <span class="pl-en">say</span>(<span class="pl-smi">greeting</span>) {
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(greeting <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span> <span class="pl-k">+</span> <span class="pl-v">this</span>.<span class="pl-smi">firstName</span> <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span> <span class="pl-k">+</span> <span class="pl-v">this</span>.<span class="pl-smi">lastName</span>);
+}
+
+<span class="pl-smi">say</span>.<span class="pl-c1">apply</span>(person1, [<span class="pl-s"><span class="pl-pds">'</span>Hello<span class="pl-pds">'</span></span>]); <span class="pl-c">// Hello Jon Kuperman</span>
+<span class="pl-smi">say</span>.<span class="pl-c1">apply</span>(person2, [<span class="pl-s"><span class="pl-pds">'</span>Hello<span class="pl-pds">'</span></span>]); <span class="pl-c">// Hello Kelly King</span>
+
+Example <span class="pl-c1">2</span> <span class="pl-k">:</span> 
+
+<span class="pl-k">&gt;</span> <span class="pl-c1">Math</span>.<span class="pl-c1">max</span>(<span class="pl-c1">17</span>, <span class="pl-c1">33</span>, <span class="pl-c1">2</span>)
 <span class="pl-c1">33</span>
 <span class="pl-k">&gt;</span> <span class="pl-c1">Math</span>.<span class="pl-smi">max</span>.<span class="pl-c1">apply</span>(<span class="pl-c1">null</span>, [<span class="pl-c1">17</span>, <span class="pl-c1">33</span>, <span class="pl-c1">2</span>])
 <span class="pl-c1">33</span></pre></div>
 
-<p>func.bind(thisValue, arg1, ..., argN)
-This performs partial function application—a new function is created that calls func with this set to thisValue and the following arguments: first arg1 until argN, and then the actual arguments of the new function. thisValue is not needed in the following non-object-oriented setting, which is why it is null.
-Here, we use bind() to create a new function plus1() that is like add(), but only requires the parameter y, because x is always 1:</p>
+<p>Bind : </p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">add</span>(<span class="pl-smi">x</span>, <span class="pl-smi">y</span>) {
+<p>Creates a partial function or returns a new functions.</p>
+
+<blockquote>
+<p>func.bind(thisValue, arg1, ..., argN)</p>
+</blockquote>
+
+<div class="highlight highlight-source-js"><pre>ex <span class="pl-c1">1</span><span class="pl-k">:</span> 
+<span class="pl-k">function</span> <span class="pl-en">add</span>(<span class="pl-smi">x</span>, <span class="pl-smi">y</span>) {
     <span class="pl-k">return</span> x <span class="pl-k">+</span> y;
 }
 <span class="pl-k">var</span> plus1 <span class="pl-k">=</span> <span class="pl-smi">add</span>.<span class="pl-en">bind</span>(<span class="pl-c1">null</span>, <span class="pl-c1">1</span>);
@@ -416,7 +504,23 @@ Here, we use bind() to create a new function plus1() that is like add(), but onl
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">plus1</span>(<span class="pl-smi">y</span>) {
     <span class="pl-k">return</span> <span class="pl-en">add</span>(<span class="pl-c1">1</span>, y);
-}</pre></div>
+}
+
+ex <span class="pl-c1">2</span><span class="pl-k">:</span> 
+<span class="pl-k">var</span> person1 <span class="pl-k">=</span> {firstName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Jon<span class="pl-pds">'</span></span>, lastName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Kuperman<span class="pl-pds">'</span></span>};
+<span class="pl-k">var</span> person2 <span class="pl-k">=</span> {firstName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Kelly<span class="pl-pds">'</span></span>, lastName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>King<span class="pl-pds">'</span></span>};
+
+<span class="pl-k">function</span> <span class="pl-en">say</span>() {
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>Hello <span class="pl-pds">'</span></span> <span class="pl-k">+</span> <span class="pl-v">this</span>.<span class="pl-smi">firstName</span> <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span> <span class="pl-k">+</span> <span class="pl-v">this</span>.<span class="pl-smi">lastName</span>);
+}
+
+<span class="pl-k">var</span> sayHelloJon <span class="pl-k">=</span> <span class="pl-smi">say</span>.<span class="pl-en">bind</span>(person1);
+<span class="pl-k">var</span> sayHelloKelly <span class="pl-k">=</span> <span class="pl-smi">say</span>.<span class="pl-en">bind</span>(person2);
+
+<span class="pl-en">sayHelloJon</span>(); <span class="pl-c">// Hello Jon Kuperman</span>
+<span class="pl-en">sayHelloKelly</span>(); <span class="pl-c">// Hello Kelly King</span>
+
+</pre></div>
 
 <h3>
 <a id="scope" class="anchor" href="#scope" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scope</h3>
@@ -552,15 +656,11 @@ Most mainstream languages are <code>block-scoped</code>: variables “live insid
     <span class="pl-en">console</span>.<span class="pl-c1">log</span>(twice);
 }(x <span class="pl-k">*</span> <span class="pl-c1">2</span>));</pre></div>
 
-<p>Best Practice: Avoid Creating Global Variables
-Global variables have two disadvantages. First, pieces of software that rely on global variables are subject to side effects; they are less robust, behave less predictably, and are less reusable.
-Second, all of the JavaScript on a web page shares the same global variables: </p>
-
 <blockquote>
+<p>Best Practice: Avoid Creating Global Variables</p>
+
 <p>your code, built-ins, analytics code, social media buttons, and so on.</p>
 </blockquote>
-
-<p>That means that name clashes can become a problem. That is why it is best to hide as many variables from the global scope as possible. For example, don’t do this:</p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-c">&lt;!--</span> Don’t <span class="pl-k">do</span> <span class="pl-v">this</span> <span class="pl-c">--&gt;</span>
 <span class="pl-k">&lt;</span>script<span class="pl-k">&gt;</span>
@@ -752,7 +852,7 @@ deleting props<span class="pl-k">:</span>
 <li>non-primitives are mutable ( properties can be added or deleted ), compared by identity rather than value.</li>
 </ul>
 
-<p>In JavaScript there are 5 primitive types: undefined, null, boolean, string and number. Everything else is an object. The primitive types boolean, string and number can be wrapped by their object counterparts. These objects are instances of the Boolean, String and Number constructors respectively.</p>
+<p>In JavaScript there are 5 primitive types: <code>undefined, null, boolean, string</code> and <code>number</code>. Everything else is an object. </p>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">typeof</span> <span class="pl-c1">true</span>; <span class="pl-c">//"boolean"</span>
 <span class="pl-k">typeof</span> <span class="pl-c1">Boolean</span>(<span class="pl-c1">true</span>); <span class="pl-c">//"boolean"</span>
@@ -1052,8 +1152,48 @@ with provided context <code>this</code> and arguments.</p>
 <h3>
 <a id="synchronous-vs-asynchronous" class="anchor" href="#synchronous-vs-asynchronous" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Synchronous Vs Asynchronous</h3>
 
-<h2>
-<a id="--blocking-vs-non-blocking" class="anchor" href="#--blocking-vs-non-blocking" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>- Blocking vs non-blocking</h2>
+<ul>
+<li>Blocking vs non-blocking</li>
+<li>Event Loop</li>
+<li>Web Apis</li>
+</ul>
+
+<p>console.log('So her we are to sync vs async ');
+setTimeout(function asyncCB(){
+    console.log('Hello folks !!!');
+},0);
+console.log('Wait i forgot something to say !!!');</p>
+
+<h3>
+<a id="further-reading-" class="anchor" href="#further-reading-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Further Reading :</h3>
+
+<p><a href="https://javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/">Primitives</a></p>
+
+<p><a href="https://javascriptweblog.wordpress.com/2010/05/03/the-value-of-valueof/">valueOf &amp; toString</a></p>
+
+<p><a href="http://davidshariff.com/blog/what-is-the-execution-context-in-javascript/">Context</a></p>
+
+<p><a href="http://davidshariff.com/blog/javascript-scope-chain-and-closures/">closures</a></p>
+
+<p><a href="http://davidshariff.com/blog/javascript-this-keyword/">This</a></p>
+
+<p><a href="http://www.nfriedly.com/techblog/2009/06/advanced-javascript-objects-arrays-and-array-like-objects/">Array Like Objects</a></p>
+
+<p><a href="http://www.2ality.com/2010/12/javascripts-prototypal-inheritance.html">GitHub</a></p>
+
+<p><a href="http://www.2ality.com/2011/03/lightweight-javascript-inheritance-apis.html">Inheritance</a></p>
+
+<h3>
+<a id="video" class="anchor" href="#video" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Video</h3>
+
+<p><a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">EventLoop</a></p>
+
+<h3>
+<a id="books-" class="anchor" href="#books-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Books :</h3>
+
+<p><a href="http://www.javascriptenlightenment.com/JavaScript_Enlightenment.pdf">Javascript Englightment</a></p>
+
+<p><a href="http://speakingjs.com/es5/index.html">ES5</a></p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/kamesh-a/Javascript">Javascript</a> is maintained by <a href="https://github.com/kamesh-a">kamesh-a</a>.</span>
