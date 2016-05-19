@@ -96,10 +96,11 @@ function f() {
 
 ```
 
-###IIFE Immediately invoked function expression (IIFE, pronounced “iffy”)
+### IIFE Immediately invoked function expression (IIFE, pronounced “iffy”)
 - It is immediately invoked
 - It must be an expression
 - The trailing semicolon is required
+
 ```javascript
 function f() {
     if (condition) {
@@ -132,13 +133,12 @@ var x = 23;
     console.log(twice);
 }(x * 2));
 ```
-Best Practice: Avoid Creating Global Variables
-Global variables have two disadvantages. First, pieces of software that rely on global variables are subject to side effects; they are less robust, behave less predictably, and are less reusable.
-Second, all of the JavaScript on a web page shares the same global variables: 
+
+> Best Practice: Avoid Creating Global Variables
 
 > your code, built-ins, analytics code, social media buttons, and so on.
 
-That means that name clashes can become a problem. That is why it is best to hide as many variables from the global scope as possible. For example, don’t do this:
+
 ```javascript
 <!-- Don’t do this -->
 <script>

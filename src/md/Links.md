@@ -16,6 +16,10 @@
 
 [Inheritance](http://www.2ality.com/2011/03/lightweight-javascript-inheritance-apis.html)
 
+### Simulation
+
+[Loupe simulation](http://latentflip.com/loupe)
+
 ### Video 
 
 [EventLoop](https://www.youtube.com/watch?v=8aGhZQkoFbQ)

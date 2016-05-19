@@ -1,0 +1,11 @@
+The most common task that any developer would do is File I/O, this being a very fundamental process :
+
+Open a File.
+
+Read it's contents and print.
+
+Do something else.
+
+Let's see how this can be done with blocking and non-blocking code in node.js and see how it matter!
+
+What we trying to do here, is reading tow simple files : hosts and users and printing there contents, meanwhile printing few hello msgs.

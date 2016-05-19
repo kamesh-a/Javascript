@@ -4,16 +4,20 @@ layout: "default"
 isPage: true
 ---
 
-What is Javascript ? 
-> client side scripting
+What is Javascript ?
+
+client side scripting : 
 > wiki : An object-oriented computer programming language commonly used to create interactive effects within web browsers
 
+![Influences](http://speakingjs.com/es5/images/spjs_0701.png)
 
-- Client-side JavaScript extends the core language by supplying objects to control a browser and its Document Object Model (DOM).
-- Server-side JavaScript extends the core language by supplying objects relevant to running JavaScript on a server. 
-  1. Communicate with a database
-  2. Provide continuity of information from one invocation to another of the application
-  3. Perform file manipulations on a server
+- Event-driven interaction model `vs` request-response model
+- Concurrent operations
+- Client-side JavaScript extends the core language by supplying objects to control a `Browser` and its `Document Object Model (DOM`).
+- Server-side JavaScript extends the core language by supplying objects relevant to running JavaScript on a `server`. 
+  1. Communicate with a `database`
+  2. Provide continuity of information from one invocation to another of the application 
+  3. Perform `file` manipulations on a server
 
 Everything in javascript is an object. Aww!!!
 > Act like objects. ( Explained in Literals section )

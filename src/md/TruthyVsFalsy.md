@@ -8,6 +8,16 @@ Falsy values in language, equality or comparision check not needed
 - String: ''
 
 ```javascript
+var user = 'data'
+if( user != null && user != false && typeof user != object ){
+	console.log('Do some operations..')
+}
+```
+
+Simply you can check for Truthy or falsy.
+
+```javascript
+
 var falsyArr = [0, undefined, null, '', NaN];
 
 falsyArr.forEach(function(element, index) {

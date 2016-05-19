@@ -3,7 +3,8 @@
 - Primitives are immutable, compared by value ( undefined, null, boolean, string and number )
 - non-primitives are mutable ( properties can be added or deleted ), compared by identity rather than value.
 
-In JavaScript there are 5 primitive types: undefined, null, boolean, string and number. Everything else is an object. The primitive types boolean, string and number can be wrapped by their object counterparts. These objects are instances of the Boolean, String and Number constructors respectively.
+In JavaScript there are 5 primitive types: `undefined, null, boolean, string` and `number`. Everything else is an object. 
+
 ```javascript
 typeof true; //"boolean"
 typeof Boolean(true); //"boolean"

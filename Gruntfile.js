@@ -17,6 +17,7 @@ module.exports = function(grunt) {
             ,'src/md/LiteralsVsWrappers.md'
             ,'src/md/inheritance.md'
             ,'src/md/this.md'
+            ,'src/md/closure.md'
             ,'src/md/EventLoop.md'
             ,'src/md/Links.md'
         ],
